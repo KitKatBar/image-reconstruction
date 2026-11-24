@@ -1,0 +1,98 @@
+[
+  {
+    "split": "personal",
+    "scale": 2,
+    "method": "bicubic",
+    "image_count": 1,
+    "mae_mean": 0.03993281349539757,
+    "mae_std": 0.0,
+    "psnr_db_mean": 22.75156198610668,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.8275581002235413,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 2,
+    "method": "lanczos",
+    "image_count": 1,
+    "mae_mean": 0.0398055724799633,
+    "mae_std": 0.0,
+    "psnr_db_mean": 22.873719185104715,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.8338132500648499,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 4,
+    "method": "bicubic",
+    "image_count": 1,
+    "mae_mean": 0.061015449464321136,
+    "mae_std": 0.0,
+    "psnr_db_mean": 19.822332082167915,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.6403523087501526,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 4,
+    "method": "lanczos",
+    "image_count": 1,
+    "mae_mean": 0.060041461139917374,
+    "mae_std": 0.0,
+    "psnr_db_mean": 19.992209749196586,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.6492359638214111,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 8,
+    "method": "bicubic",
+    "image_count": 1,
+    "mae_mean": 0.08646239340305328,
+    "mae_std": 0.0,
+    "psnr_db_mean": 17.600653211300646,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.44092532992362976,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 8,
+    "method": "lanczos",
+    "image_count": 1,
+    "mae_mean": 0.08512134104967117,
+    "mae_std": 0.0,
+    "psnr_db_mean": 17.68799442456058,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.44406405091285706,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 16,
+    "method": "bicubic",
+    "image_count": 1,
+    "mae_mean": 0.11527782678604126,
+    "mae_std": 0.0,
+    "psnr_db_mean": 15.860014780750213,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.3216361105442047,
+    "ssim_std": 0.0
+  },
+  {
+    "split": "personal",
+    "scale": 16,
+    "method": "lanczos",
+    "image_count": 1,
+    "mae_mean": 0.11370663344860077,
+    "mae_std": 0.0,
+    "psnr_db_mean": 15.957883730058459,
+    "psnr_db_std": 0.0,
+    "ssim_mean": 0.3210170269012451,
+    "ssim_std": 0.0
+  }
+]
