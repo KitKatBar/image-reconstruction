@@ -1,9 +1,0 @@
-split,image_id,source_path,width,height,scale,method,mae,psnr_db,ssim
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,2,bicubic,0.03993281349539757,22.75156198610668,0.8275581002235413
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,2,lanczos,0.0398055724799633,22.873719185104715,0.8338132500648499
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,4,bicubic,0.061015449464321136,19.822332082167915,0.6403523087501526
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,4,lanczos,0.060041461139917374,19.992209749196586,0.6492359638214111
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,8,bicubic,0.08646239340305328,17.600653211300646,0.44092532992362976
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,8,lanczos,0.08512134104967117,17.68799442456058,0.44406405091285706
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,16,bicubic,0.11527782678604126,15.860014780750213,0.3216361105442047
-personal,klukai_artwork_crop,data\klukai_artwork_crop.png,289,453,16,lanczos,0.11370663344860077,15.957883730058459,0.3210170269012451

@@ -223,3 +223,30 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local Python environment
+.venv/
+venv/
+env/
+
+# Downloaded datasets
+data/raw/
+data/processed/
+*.zip
+*.tar
+*.tar.gz
+
+# Generated results
+results/metrics/
+results/plots/
+results/visualizations/
+results/batch_pipeline/
+
+# Trained model files
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# Keep directory placeholders visible in GitHub
+!.gitkeep
