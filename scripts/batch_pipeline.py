@@ -14,12 +14,14 @@ For each source image and scale factor it:
 Example:
     python batch_pipeline.py \
         --input-dir data/raw/personal \
+        --dataset-name personal \
         --split-name personal \
         --scales 2 4 8 16
 
 DIV2K training example:
     python batch_pipeline.py \
         --input-dir data/DIV2K_train_HR \
+        --dataset-name DIV2K \
         --split-name train \
         --scales 2 4 8 16
 """
@@ -48,6 +50,16 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input-dir", type=Path, required=True)
+    parser.add_argument(
+        "--dataset-name",
+        default="custom",
+        help="Dataset identifier, e.g. DIV2K, CelebA, Flickr2K, or personal",
+    )
+    parser.add_argument(
+        "--method-name",
+        default="interpolation",
+        help="Method label for results, such as interpolation or CNN",
+    )
     parser.add_argument(
         "--split-name",
         default="custom",
@@ -243,7 +255,13 @@ def main() -> None:
     if args.max_images is not None:
         image_paths = image_paths[: args.max_images]
 
-    target_dir = args.processed_dir / args.split_name / "targets"
+    dataset_dir_name = re.sub(r"[^A-Za-z0-9_.-]+", "_", args.dataset_name)
+    method_dir_name = re.sub(r"[^A-Za-z0-9_.-]+", "_", args.method_name)
+    dataset_results_dir = args.results_dir / dataset_dir_name / method_dir_name
+    split_results_dir = dataset_results_dir / args.split_name
+    processed_dataset_dir = args.processed_dir / dataset_dir_name
+
+    target_dir = processed_dataset_dir / args.split_name / "targets"
     rows: List[dict] = []
 
     print(f"Found {len(image_paths)} image(s) under {args.input_dir}")
@@ -258,7 +276,7 @@ def main() -> None:
         for scale in scales:
             low_resolution, pixelated = create_degraded_image(original, scale)
             restorations = restore_with_interpolation(low_resolution, original.size)
-            scale_dir = args.processed_dir / args.split_name / f"scale_x{scale}"
+            scale_dir = processed_dataset_dir / args.split_name / f"scale_x{scale}"
 
             save_image(pixelated, scale_dir / "inputs" / f"{image_id}.png")
             save_image(low_resolution, scale_dir / "low_resolution" / f"{image_id}.png")
@@ -267,9 +285,8 @@ def main() -> None:
                 for method, restoration in restorations.items():
                     save_image(
                         restoration,
-                        args.results_dir
+                        split_results_dir
                         / "restorations"
-                        / args.split_name
                         / f"scale_x{scale}"
                         / method
                         / f"{image_id}.png",
@@ -318,16 +335,20 @@ def main() -> None:
         "ssim_std",
     ]
 
-    write_csv(args.results_dir / "metrics_per_image.csv", rows, detail_fields)
-    write_csv(args.results_dir / "summary_metrics.csv", summary_rows, summary_fields)
-    write_summary_json(args.results_dir / "summary_metrics.json", summary_rows)
+    write_csv(split_results_dir / "metrics_per_image.csv", rows, detail_fields)
+    write_csv(split_results_dir / "summary_metrics.csv", summary_rows, summary_fields)
+    write_summary_json(split_results_dir / "summary_metrics.json", summary_rows)
 
     for metric in ("mae", "psnr_db", "ssim"):
-        plot_metric(summary_rows, metric, args.results_dir / "plots" / f"{metric}_by_scale.png")
+        plot_metric(
+            summary_rows,
+            metric,
+            split_results_dir / "plots" / f"{metric}_by_scale.png",
+        )
 
     print(f"\nProcessed {len(image_paths)} image(s).")
-    print(f"Pair files saved under: {args.processed_dir / args.split_name}")
-    print(f"Metrics and plots saved under: {args.results_dir}")
+    print(f"Pair files saved under: {processed_dataset_dir / args.split_name}")
+    print(f"Metrics and plots saved under: {split_results_dir}")
 
 
 if __name__ == "__main__":
