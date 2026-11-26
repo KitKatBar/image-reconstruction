@@ -226,6 +226,7 @@ __marimo__/
 
 # Local Python environment
 .venv/
+.venv-xpu/
 venv/
 env/
 

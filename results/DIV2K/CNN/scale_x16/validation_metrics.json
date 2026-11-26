@@ -1,0 +1,10 @@
+{
+  "image_count": 100,
+  "mae_mean": 0.05377859426662326,
+  "psnr_db_mean": 21.566319523384713,
+  "ssim_mean": 0.5503735321760178,
+  "dataset": "DIV2K",
+  "model": "CNN",
+  "scale": 16,
+  "checkpoint": "checkpoints\\DIV2K\\CNN\\scale_x16\\best.pt"
+}
