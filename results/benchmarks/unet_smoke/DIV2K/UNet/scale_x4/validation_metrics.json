@@ -1,0 +1,10 @@
+{
+  "image_count": 10,
+  "mae_mean": 0.18183340206742288,
+  "psnr_db_mean": 12.995195001997663,
+  "ssim_mean": 0.36174883395433427,
+  "dataset": "DIV2K",
+  "model": "UNet",
+  "scale": 4,
+  "checkpoint": "checkpoints\\benchmarks\\unet_smoke\\DIV2K\\UNet\\scale_x4\\best.pt"
+}
